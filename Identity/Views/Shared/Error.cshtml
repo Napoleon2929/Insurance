@@ -1,0 +1,22 @@
+﻿@model Identity.Models.LoginViewModel
+
+<div class="page">
+
+    <div class="container">
+        <div class="blocked blocked__container">
+            <div class="blocked__image">
+                <img src="~/img/error.svg">
+            </div>
+            <div class="blocked__message">
+                <span>
+                    An error occured while processing your request.<br>
+                </span>
+            </div>
+            <div class="container__actions normal divider">
+                <button class="raised-button log-on-button" onclick="window.location='@Url.Action("Login", "Account")'">Return to login page</button>
+
+                <button class="raised-button log-on-button">Contact NDB</button>
+            </div>
+        </div>
+    </div>
+</div>

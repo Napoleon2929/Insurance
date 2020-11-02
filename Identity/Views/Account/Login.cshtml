@@ -1,0 +1,52 @@
+﻿@using Shared.Identity
+@using Microsoft.AspNetCore.Identity;
+@model Identity.Models.LoginViewModel
+@inject SignInManager<ApplicationUser> SignInManager
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<div class="page">
+    <div class="log-on container">
+        <form asp-route-returnurl="@ViewData["ReturnUrl"]" class="container__form" method="post">
+            <div class="container__header">
+                <div class="title">
+                    <span>Log on</span>
+                </div>
+                @if (TempData["error"] != null)
+                {
+                    <div class="error">
+                        <img class="error__image" src="~/img/error.svg">
+                        <span class="error__message">@TempData["error"]</span>
+                    </div>
+                }
+            </div>
+
+            <div class="container__content">
+                <div class="error-wrapper @(ViewContext.ModelState.IsValid ? "" : "error")">
+                    <div class="input-wrapper">
+                        <label class="input-wrapper__label" for="log-on-login">Login</label>
+
+                        <div class="input-wrapper__input">
+                            <input asp-for="Email" class="field" id="log-on-login" type="text">
+                            <span class="placeholder">Enter here</span>
+                        </div>
+                    </div>
+
+                    <div class="input-wrapper">
+                        <label class="input-wrapper__label" for="log-on-password">Password</label>
+
+                        <div class="input-wrapper__input">
+                            <input asp-for="Password" class="field" id="log-on-password" type="password">
+                            <span class="placeholder">Enter here</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container__actions normal">
+                <button type="submit" class="raised-button log-on-button">OK</button>
+            </div>
+        </form>
+    </div>
+</div>
